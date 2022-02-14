@@ -1,20 +1,194 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Raspoznavanje bolesti štitnjače
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-col id="inputGroup">
+    
+    <ion-item class="borderItems">
+      <ion-label>Age</ion-label>
+      <input  placeholder="age" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.age">
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Gender</ion-label>
+      <select [(ngModel)]="thyroidDiseaseRecord.gender">
+        <option *ngFor="let item of gender">{{item}}</option>
+      </select>
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>On thyroxine</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.on_thyroxine"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Query on thyroxine</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.query_on_thyroxine"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>On antithyroid medication</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.on_antithyroid_medication"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Sick</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.sick"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Pregnant</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.pregnant"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Thyroid surgery</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.thyroid_surgery"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>I131 treatment</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.I131_treatment"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Query hypothyroid</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.query_hypothyroid"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Query hyperthyroid</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.query_hyperthyroid"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Lithium</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.lithium"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Goitre</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.goitre"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Tumor</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.tumor"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>Psych</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.psych"> 
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>TSH measured</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.TSH_measured"> 
+    </ion-item>
+
+    <ion-item class="borderItems" [disabled]='!thyroidDiseaseRecord.TSH_measured'>
+      <ion-label>TSH</ion-label>
+      <input  placeholder="TSH" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.TSH">
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>T3 measured</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.T3_measured"> 
+    </ion-item>
+
+    <ion-item class="borderItems" [disabled]='!thyroidDiseaseRecord.T3_measured'>
+      <ion-label>T3</ion-label>
+      <input  placeholder="T3" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.T3">
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>TT4 measured</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.TT4_measured"> 
+    </ion-item>
+
+    <ion-item class="borderItems" [disabled]='!thyroidDiseaseRecord.TT4_measured'>
+      <ion-label>TT4</ion-label>
+      <input placeholder="age" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.TT4">
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>T4U measured</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.T4U_measured"> 
+    </ion-item>
+
+    <ion-item class="borderItems" [disabled]='!thyroidDiseaseRecord.T4U_measured'>
+      <ion-label>T4U</ion-label>
+      <input placeholder="T4U" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.T4U">
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>FTI measured</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.FTI_measured"> 
+    </ion-item>
+
+    <ion-item class="borderItems" [disabled]='!thyroidDiseaseRecord.FTI_measured'>
+      <ion-label>FTI</ion-label>
+      <input placeholder="FTI" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.FTI">
+    </ion-item>
+
+    <ion-item class="borderItems">
+      <ion-label>TBG measured</ion-label>
+      <input type="checkbox" [(ngModel)]="thyroidDiseaseRecord.TBG_measured"> 
+    </ion-item>
+
+    <ion-item class="borderItems" [disabled]='!thyroidDiseaseRecord.TBG_measured'>
+      <ion-label>TBG</ion-label>
+      <input placeholder="TBG" type="number" min="0" max="150" [(ngModel)]="thyroidDiseaseRecord.TBG" >
+    </ion-item>
+    
+    
+    <ion-item id="sendButtonItem">
+      <ion-button (click)="tempFill()">Fill with test data</ion-button>
+    </ion-item>
+
+    <ion-button color="primary" (click)="buttonSend()">Send</ion-button>
+    
+  </ion-col>
+
+
+  
+
+  <ion-col id="resultGroup">
+
+    <ion-item>
+      Aplikacija za raspoznavanje bolesti štitnjače na temelju popunjenog obrasca.
+    </ion-item>
+
+    <ion-item>
+      <ion-row>
+        <ion-label>You might need to activate proxy.</ion-label>
+      </ion-row>
+    </ion-item>
+
+    <ion-item>
+      <ion-row>
+        <ion-label>ACTIVATE PROXY HERE: <a href="https://cors-anywhere.herokuapp.com/">https://cors-anywhere.herokuapp.com/</a></ion-label>
+      </ion-row>
+    </ion-item>
+
+    <ion-item>
+      <ion-row>
+        <ion-label>CREDIT for proxy: <a href="https://github.com/Rob--W/cors-anywhere">https://github.com/Rob--W/cors-anywhere</a></ion-label>
+      </ion-row>
+    </ion-item>
+    
+    <ion-item id="resultItem">
+      <ion-label>Diagnosis: <b id="colorResult">{{diagnosis}}</b></ion-label>
+    </ion-item>
+
+  </ion-col>
+
 </ion-content>
+
+
