@@ -1,14 +1,12 @@
 ion-content {
-  --padding-top: 30px;
+  --padding-top: 15px;
   --padding-start: 20px;
   --padding-end: 20px;
-
-  --background-color: aqua;
 }
 
 #inputGroup {
-  width: 50%;
-  float: left;
+  width: 30%;
+  padding-bottom: 30px;
 }
 
 .borderItems {
@@ -20,13 +18,14 @@ ion-content {
   --padding-start: 100px;
 }
 
-#sendButtonItem {
-  float: right;
+#buttonItem {
+  //float: right;
+  margin-top: 25px;
   --background: transparent;
   margin-bottom: 20px;
 }
 
-#sendButtonItem ion-button {
+#buttonItem ion-button {
   --padding-start: 20px;
   --padding-end: 20px;
   --padding-top: 20px;
@@ -44,7 +43,7 @@ ion-content {
 
 #resultItem {
   color: #9d9fa6;
-  margin-top: 60px;
+  margin-top: 30px;
   border: #ed576b 2px solid;
 }
 

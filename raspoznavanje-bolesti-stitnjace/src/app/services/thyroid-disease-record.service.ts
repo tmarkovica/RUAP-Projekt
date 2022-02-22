@@ -16,19 +16,19 @@ export class ThyroidDiseaseRecordService {
   "https://cors-anywhere.herokuapp.com/";
 
   private url: string = 
-  "";
+  "https://ussouthcentral.services.azureml.net/workspaces/d6c2b3b4e01449b6ac051ea57fb49600/services/fe86aaa3f42f4e72b2b69a9f574210c3/execute?api-version=2.0&format=swagger";
 
-  private apiKey = '';
+  private apiKey = 'bLIElRwOveer5+kiHHU7PsLPuGslCoL5H0njuQ4qJalVJmPa3FQpFynJv0TOWZSOqP1/9DuKfimSU3vl/P1MoQ==';
 
-  weight: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  diagnosis: BehaviorSubject<string> = new BehaviorSubject<string>(null);
 
 
   send(thyroidData: ThyroidDiseaseRecord) {
-    console.log(`customerData: ${thyroidData}`);
+    console.log(`thyroidData:`);
     console.log(thyroidData);
-    var len = Object.keys(thyroidData).length;
+    /* var len = Object.keys(thyroidData).length;
     console.log(len.toString());
-    let str: string = len.toString();
+    let str: string = len.toString(); */
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -87,16 +87,92 @@ export class ThyroidDiseaseRecordService {
     }) => {
       if (res?.Results.output1.length === 1) {
         console.log(res);
-
-        console.log("weight: ");
+        console.log("Result: " + res.Results.output1[0]['Scored Labels']);
         
-        console.log(res.Results.output1[0]['Scored Labels']);
-
-        this.weight.next(res.Results.output1[0]['Scored Labels']);
+        //this.diagnosis.next(res.Results.output1[0]['Scored Labels']);
+        this.setDiagnosis(res.Results.output1[0]['Scored Labels']);
       }
       else {
         console.log("Some error...");    
       }      
     });
+  }
+
+  private setDiagnosis(label: string) {
+    var description: string = "";
+
+    //hyperthyroid conditions
+    if (label.includes("A"))
+      description += "Hyperthyroid, ";
+
+    if (label.includes("B"))
+      description += "T3 toxic, ";
+
+    if (label.includes("C"))
+      description += "Toxic goitre, ";
+
+    if (label.includes("D"))
+      description += "Secondary toxic, ";
+
+    //hypothyroid conditions:
+    if (label.includes("E"))
+      description += "hypothyroid, ";
+
+    if (label.includes("F"))
+      description += "primary hypothyroid, ";
+
+    if (label.includes("G"))
+      description += "compensated hypothyroid, ";
+
+    if (label.includes("H"))
+      description += "secondary hypothyroid, ";
+
+    //binding protein
+    if (label.includes("I"))
+      description += "increased binding protein, ";
+
+    if (label.includes("J"))
+      description += "decreased binding protein, ";
+
+    //general health
+    if (label.includes("K"))
+      description += "concurrent non-thyroidal illness, ";
+
+    //replacement therapy
+    if (label.includes("L"))
+      description += "consistent with replacement therapy, ";
+
+    if (label.includes("M"))
+      description += "underreplaced, ";
+
+    if (label.includes("N"))
+      description += "overreplaced, ";
+
+    //antithyroid treatment
+    if (label.includes("O"))
+      description += "antithyroid drugs, ";
+
+    if (label.includes("P"))
+      description += "I131 treatment, ";
+
+    if (label.includes("Q"))
+      description += "surgery, ";
+
+    //miscellaneous
+    if (label.includes("R"))
+      description += "discordant assay results, ";
+
+    if (label.includes("S"))
+      description += "elevated TBG, ";
+
+    if (label.includes("T"))
+      description += "elevated thyroid hormones, ";
+
+    // NO CONDITION
+    if (label.includes("-"))
+      description += "Healthy, ";
+
+
+    this.diagnosis.next(description);
   }
 }
