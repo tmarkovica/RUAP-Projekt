@@ -3,7 +3,8 @@ Project for Service Computing and Big Data course (hrv. Računarstvo usluga i an
 Web application developed in Ionic that uses Azure Machine Learning API to predict bodyweight.
 
 ## App is hosted on firebase:
-
+https://recognition-of-thyroid-disease.web.app/home \
+https://recognition-of-thyroid-disease.firebaseapp.com/home
 
 ## Credits
 https://github.com/Rob--W/cors-anywhere \
