@@ -1,6 +1,6 @@
 # RUAP-projekt # raspoznavanje-bolesti-stitnjace
 Project for Service Computing and Big Data course (hrv. Računarstvo usluga i analiza podataka).
-Web application developed in Ionic that uses Azure Machine Learning API to predict bodyweight.
+Web application developed in Ionic that uses Azure Machine Learning API to predict thyroid disease.
 
 ## App is hosted on firebase:
 https://recognition-of-thyroid-disease.web.app/home \
