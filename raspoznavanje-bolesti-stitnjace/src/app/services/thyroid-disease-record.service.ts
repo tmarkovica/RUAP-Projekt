@@ -26,9 +26,6 @@ export class ThyroidDiseaseRecordService {
   send(thyroidData: ThyroidDiseaseRecord) {
     console.log(`thyroidData:`);
     console.log(thyroidData);
-    /* var len = Object.keys(thyroidData).length;
-    console.log(len.toString());
-    let str: string = len.toString(); */
     
     const httpOptions = {
       headers: new HttpHeaders({
@@ -88,8 +85,6 @@ export class ThyroidDiseaseRecordService {
       if (res?.Results.output1.length === 1) {
         console.log(res);
         console.log("Result: " + res.Results.output1[0]['Scored Labels']);
-        
-        //this.diagnosis.next(res.Results.output1[0]['Scored Labels']);
         this.setDiagnosis(res.Results.output1[0]['Scored Labels']);
       }
       else {
@@ -171,7 +166,6 @@ export class ThyroidDiseaseRecordService {
     // NO CONDITION
     if (label.includes("-"))
       description += "Healthy, ";
-
 
     this.diagnosis.next(description);
   }
